@@ -38,7 +38,7 @@
 
 ## Equipment
 - The main body of the car is the SunFounder [PiCar-V kit V2](https://www.sunfounder.com/products/smart-video-car) and is equipped with a Raspberry Pi (RPi)
-- **_Tensorflow v2.4_** is installed on the car,
+- **_TensorFlow v2.4_** is installed on the car,
 - The car has an optional Coral Edge TPU, which is a custom device to run forward-pass operations for edge computing.
 - Note that it isn’t necessary to convert your model to TensorFlow Lite.
 
