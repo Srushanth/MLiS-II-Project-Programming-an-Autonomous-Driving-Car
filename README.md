@@ -14,6 +14,7 @@
 5. [Resources to build the model](#resources-to-build-the-model)
 6. [Tips](#tips)
 7. [Report Marking CriteriaFile](#report-marking-criteria)
+8. [Pre-Processing](#pre-processing)
 
 # Overview
 **_In this project the task is to train a deep learning algorithm to autonomously navigate a real car around a realistic test circuit, and make the appropriate manoeuvres where necessary. At the end of the project, you are expected to give a presentation and write a report about what you have done. Your model will be tested on the track and will compete against the models of your peers._**
@@ -109,6 +110,98 @@ Team name is **_Alpha_**
 [report-guidelines.pdf](Resources/report-guidelines.pdf)
 </br>
 [presentation-guidelines.pdf](/Resources/presentation-guidelines.pdf)
+
+# Pre-Processing
+The pre-processing testing file is [here](/Code/Test/Threshold.ipynb).
+
+## Initial Observations
+- Image used is [this](/Code/Test/10022.png)
+- Tried to threshold the image using **_cv2.threshold(img, 253, 255, cv2.THRESH_BINARY)_**
+- Added a lower & upper range threshold
+- Crop the bottom of the image
+
+## Below is the sample code
+```Python
+# Load libraries
+import cv2
+import numpy as np
+
+# Read image
+img = cv2.imread('./10022.png')
+
+# Show the image
+cv2.imshow('img', img)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# global thresholding
+ret1, th1 = cv2.threshold(img, 253, 255, cv2.THRESH_BINARY)
+
+lower_black = np.array([0, 0, 0], dtype = "uint16")
+upper_black = np.array([250, 250, 250], dtype = "uint16")
+black_mask = cv2.inRange(th1, lower_black, upper_black)
+cv2.imshow('img', black_mask)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+
+# Image shape
+(h, w) = black_mask.shape
+
+# Required shape of the image
+required = black_mask[int((3*h)/5):h, :w]
+
+# This image will be used for the final inference
+cv2.imshow('img', required)
+cv2.waitKey(0)
+cv2.destroyAllWindows()
+```
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
