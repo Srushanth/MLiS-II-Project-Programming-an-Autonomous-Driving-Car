@@ -1,0 +1,101 @@
+﻿<Page
+    x:Class="Data_Labeler.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:Data_Labeler"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d"
+    Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <!--Header-->
+            <RowDefinition Height="Auto"/>
+            
+            <!--Body of the Labeler-->
+            <RowDefinition Height="1*"/>
+        </Grid.RowDefinitions>
+
+        <!--Header-->
+        <Grid Grid.Row="0">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="Auto"/>
+                <ColumnDefinition Width="Auto"/>
+            </Grid.ColumnDefinitions>
+            <!--Left / Previous Image-->
+            <Button Grid.Column="0"
+                    x:Name="__Button_Left"
+                    Content="&#xF0B0;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Background="Transparent"
+                    HorizontalAlignment="Left"
+                    VerticalAlignment="Center"/>
+            <TextBlock Grid.Column="1"
+                       Text="Folder Path: "
+                       VerticalAlignment="Center"
+                       Padding="30 0 5 0"/>
+            <TextBox Grid.Column="2"
+                     x:Name="__Folder_Path"
+                     VerticalAlignment="Center"/>
+            <Button Grid.Column="3"
+                    x:Name="__Change_Folder_Path"
+                    Content="Change Path"
+                    Click="__Change_Folder_Path_Click"/>
+            <!--Right / Previous Image-->
+            <Button Grid.Column="4"
+                    x:Name="__Button_Right"
+                    Content="&#xF0AF;"
+                    FontFamily="Segoe MDL2 Assets"
+                    FontSize="20"
+                    Background="Transparent"
+                    HorizontalAlignment="Right"
+                    VerticalAlignment="Center"/>
+        </Grid>
+        
+        <!--Labeler-->
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <!--This is List of images-->
+                <ColumnDefinition Width="1*"/>
+                
+                <!--This is where the Image will be shown-->
+                <ColumnDefinition Width="2*"/>
+                
+                <!--This is where the Arrows will be shown-->
+                <ColumnDefinition Width="1*"/>
+            </Grid.ColumnDefinitions>
+            <!--This is List of images-->
+            <Grid Grid.Column="0"
+                  Background="DimGray">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="1*"/>
+                </Grid.RowDefinitions>
+                
+                <!--Load Images-->
+                <Button Grid.Row="0"
+                        x:Name="__Button_Load_Images"
+                        Content="Load Images"
+                        HorizontalAlignment="Stretch"
+                        Click="__Button_Load_Images_Click"/>
+                <Grid Grid.Row="1">
+                    
+                </Grid>
+            </Grid>
+            
+            <!--This is where the Image will be shown-->
+            <Image Grid.Column="1"/>
+
+            <!--This is where the Arrows will be shown-->
+            <Grid Grid.Column="2"
+                  Background="DimGray">
+                
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>
